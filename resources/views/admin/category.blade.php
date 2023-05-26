@@ -44,18 +44,21 @@
                                     <select class="form-control  @error('category') is-invalid @enderror" id="sel1"  class="selectpicker" data-live-search="true" name="category">
                                         <option value=0>Nothing selected</option>
                                         @foreach($categories as $category)
-                                        <option  value="{{$category->id}}" > &nbsp &nbsp{{$category->designation}}</option>
+                                        <option  value="{{$category->id}}" > {{$category->designation}}</option>
                                             @foreach($category->childrenCategories as $children_category)
-                                            <option  value="{{$children_category->id}}"> &nbsp &nbsp{{$children_category->designation}}</option>
+                                            <option  value="{{$children_category->id}}"> &nbsp &nbsp &nbsp{{$children_category->designation}}</option>
                                             @endforeach
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label >Photo : </label>
-                                    <input class="form-control" name="photo" type="file">
+                                    <input class="form-control" name="image" type="file">
                                 </div>
-
+                                <div class="form-group">
+                                    <label >IV : </label>
+                                    <input class="form-control" name="IV" type="text">
+                                </div>
                                 <div class="form-group">
                                     <label >Description : </label>
                                     <textarea class="form-control" name="description" rows="3"></textarea>
@@ -75,51 +78,45 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                        <table id="example3" class="display" >
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Désignation</th>
-                                    <th>Parent Categorie</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        <tbody>
-                            @if(isset($categories))
-                            <?php $_SESSION['i'] = 0; ?>
-                            @foreach($categories as $category)
-                                <?php $_SESSION['i']=$_SESSION['i']+1; ?>
-                                <tr id="{{$category->id}}">
-                                    <?php $dash=''; ?>
-                                    <td>{{$_SESSION['i']}}</td>
-                                    <td>{{$category->designation}}</td>
-                                    <td>
-                                        @if(isset($category->parent_id))
-                                            {{$category->childCategories->designation}}
-                                        @else
-                                        <i class="fa-solid fa-minus"></i>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <form action="{{url('admin/categories/'.$category->id)}}" method="post">
-                                            {{csrf_field()}}
-                                            {{method_field('DELETE')}}
-                                        <div class="d-flex">
-                                            <a href="{{url('admin/categories/'.$category->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                            <button class="  btn btn-danger shadow btn-xs sharp" onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="fa fa-trash"></i></button>
-                                        </div>
-                                        </form>
-                                    </td>
-                                 </tr>
-                                 @if(count($category->childCategories))
-                                     @include('sub-category-list',['subcategories' => $category->childCategories])
-                                 @endif
-
-                            @endforeach
-                            <?php unset($_SESSION['i']); ?>
-                             @endif
-                        </tbody>
-                        </table>
+                            <table id="example3" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Désignation</th>
+                                        <th>Les sous-catégories</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($categories as $category)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{$category->designation}}</td>
+                                        <td>
+                                            @if ($category->childrencategories->count() > 0)
+                                            <ul>
+                                                @foreach ($category->childrencategories as $child)
+                                                <li>{{$child->designation}}</li>
+                                                @endforeach
+                                            </ul>
+                                            @else
+                                            Aucune sous-catégorie.
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <form action="{{url('admin/categories/'.$category->id)}}" method="post">
+                                                {{csrf_field()}}
+                                                {{method_field('DELETE')}}
+                                                <div class="d-flex">
+                                                    <a href="{{url('admin/categories/'.$category->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                    <button class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="fa fa-trash"></i></button>
+                                                </div>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

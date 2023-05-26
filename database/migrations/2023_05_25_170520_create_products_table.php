@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('designation');
             $table->longText('description')->nullable();
             $table->string('code');
+            $table->integer('conditionnement');
+            $table->string('IV')->nullable();
             $table->float('pu');
+            $table->string('slug')->nullable();
+            $table->tinyInteger('flag')->nullable();
             $table->timestamps();
         });
     }

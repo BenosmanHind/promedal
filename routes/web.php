@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('/admin/categories',CategoryController::class);
+Route::resource('/admin/products',ProductController::class);
 
 Auth::routes();
 
