@@ -47,4 +47,56 @@ class CategoryController extends Controller
         }
         return redirect('admin/categories');
     }
+    public function edit($id){
+        $category = Category::find($id);
+        return view('admin.edit-category',compact('category'));
+    }
+
+    public function update(Request $request , $id){
+        $category = Category::find($id);
+        $category->designation = $request->designation;
+        $category->description = $request->description;
+        $category->IV = $request->IV;
+
+        if($request->image){
+            $destination = 'public/images/categories';
+            $path = $request->image->store($destination);
+            $storageName = basename($path);
+            $category->link_image = $storageName;
+         }
+        $category->save();
+
+    }
+
+    public function showChildrenCategory($id){
+        $category = Category::find($id);
+        return view('admin.show-children-category',compact('category'));
+    }
+
+    public function editChildrenCategory($id){
+        $category = Childrencategory::find($id);
+        return view('admin.edit-children-category',compact('category'));
+    }
+
+    public function deleteChildrenCategory($id){
+        $category = Childrencategory::find($id);
+        $category->delete();
+        return redirect()->back();
+    }
+
+    public function updateChildrenCategory($id , Request $request){
+        $children_category = Childrencategory::find($id);
+        $children_category->designation = $request->designation;
+            $children_category->link_image = $request->image;
+            $children_category->description = $request->description;
+            $children_category->IV = $request->IV;
+            if($request->image){
+                $destination = 'public/images/categories';
+                $path = $request->image->store($destination);
+                $storageName = basename($path);
+                $children_category->link_image = $storageName;
+             }
+            $children_category->save();
+            return redirect('admin/categories');
+    }
 }

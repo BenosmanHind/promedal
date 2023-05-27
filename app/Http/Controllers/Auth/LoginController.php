@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,4 +38,38 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request)
+    {
+
+        $input = $request->all();
+
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => ['required'],
+        ],
+        [
+            'username.required' => 'Ce champ est obligatoire',
+            'password.required' => 'Ce champ est obligatoire',
+        ]
+    );
+
+        $fieldType = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $remember_me  = ( !empty( $request->remember_me ) )? TRUE : FALSE;
+
+        if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
+        {
+            return redirect('admin');
+        }
+        else{
+            $error = 'Coordonnées incorrectes. Veuillez réessayer.';
+            return view('auth.login',compact('error'));
+            }
+
+    }
+    public function showLoginForm()
+        {
+            $error = null;
+            return view('auth.login',compact('error'));
+        }
 }

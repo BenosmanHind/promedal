@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->string('code');
             $table->integer('conditionnement');
+            $table->tinyInteger('disponibilite');
             $table->string('IV')->nullable();
             $table->string('link_image')->nullable();
             $table->float('pu');
