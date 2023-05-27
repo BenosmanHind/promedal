@@ -60,4 +60,47 @@ class ProductController extends Controller
         // Retourner null si aucun ID de sous-catégorie n'est extrait
         return null;
     }
+
+    public function edit($id){
+        $product = Product::find($id);
+        $categories = Category::all();
+        return view('admin.edit-product',compact('product','categories'));
+    }
+
+    public function update(Request $request , $id){
+     $product = Product::find($id);
+     $product->designation = $request->designation;
+     $product->pu = $request->pu;
+     $product->code = $request->code;
+     $product->conditionnement = $request->conditionnement;
+     $product->IV = $request->IV;
+     $product->slug = str::slug($request->designation);
+
+     if($request->image){
+         $destination = 'public/images/products';
+         $path = $request->image->store($destination);
+         $storageName = basename($path);
+         $product->link_image = $storageName;
+      }
+
+     $selectedCategoryId = $request->input('category');
+     $category = Category::find($selectedCategoryId);
+
+     if($category){
+         $category->products()->save($product);
+     }
+     else{
+         $childCategoryId = $this->extractChildCategoryId($selectedCategoryId);
+         $children_category = Childrencategory::find($childCategoryId);
+         $children_category->products()->save($product);
+     }
+
+     return redirect('admin/products');
+    }
+    public function destroy($id){
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('admin/products');
+
+    }
 }

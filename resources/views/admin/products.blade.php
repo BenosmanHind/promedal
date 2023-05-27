@@ -33,6 +33,7 @@
                                         <th>#</th>
                                         <th>Code</th>
                                         <th>Designation</th>
+                                        <th>Catégorie</th>
                                         <th>Cond</th>
                                         <th>PU/HT</th>
                                         <th>Action</th>
@@ -44,14 +45,15 @@
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$product->code}}</td>
                                             <td>{{$product->designation }}</td>
+                                            <td>{{$product->productable->designation }}</td>
                                             <td>{{ $product->conditionnement }}</td>
                                             <td>{{ $product->pu }}</td>
                                             <td>
 
                                                 <div class="d-flex">
 
-                                                    <a href="{{url('admin/orders/'.$product->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                    <form action="{{url('admin/orders/'.$product->id)}}" method="post">
+                                                    <a href="{{url('admin/products/'.$product->id.'/edit')}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                    <form action="{{url('admin/products/'.$product->id)}}" method="post">
                                                         {{csrf_field()}}
                                                         {{method_field('DELETE')}}
                                                         <button class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="fa fa-trash"></i></button>
