@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="col-6">
                                         <label>Code*:</label>
-                                        <input type="text"  class="form-control input-default @error('designation') is-invalid @enderror" value="{{old('designation')}}" name="code" placeholder="code">
+                                        <input type="text"  class="form-control input-default @error('code') is-invalid @enderror" value="{{old('code')}}" name="code" placeholder="code">
                                             @error('code')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
                                                 @foreach($categories as $category)
                                                 <option  value="{{$category->id}}" > {{$category->designation}}</option>
                                                     @foreach($category->childrenCategories as $children_category)
-                                                    <option  value="{{$children_category->id}}"> &nbsp &nbsp &nbsp{{$children_category->designation}}</option>
+                                                    <option  value="c_{{$children_category->id}}"> &nbsp &nbsp &nbsp{{$children_category->designation}}</option>
                                                     @endforeach
                                                 @endforeach
                                             </select>

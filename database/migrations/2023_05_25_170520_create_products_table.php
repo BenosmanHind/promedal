@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->integer('productable_id');
+            $table->string('productable_type');
             $table->string('designation');
             $table->longText('description')->nullable();
             $table->string('code');
             $table->integer('conditionnement');
             $table->string('IV')->nullable();
+            $table->string('link_image')->nullable();
             $table->float('pu');
             $table->string('slug')->nullable();
             $table->tinyInteger('flag')->nullable();

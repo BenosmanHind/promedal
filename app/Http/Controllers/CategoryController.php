@@ -19,9 +19,15 @@ class CategoryController extends Controller
         if($request->category == 0){
             $category = new Category();
             $category->designation = $request->designation;
-            $category->link_image = $request->image;
             $category->description = $request->description;
             $category->IV = $request->IV;
+
+            if($request->image){
+                $destination = 'public/images/categories';
+                $path = $request->image->store($destination);
+                $storageName = basename($path);
+                $category->link_image = $storageName;
+             }
             $category->save();
         }
         else{
@@ -31,6 +37,12 @@ class CategoryController extends Controller
             $children_category->description = $request->description;
             $children_category->category_id = $request->category;
             $children_category->IV = $request->IV;
+            if($request->image){
+                $destination = 'public/images/categories';
+                $path = $request->image->store($destination);
+                $storageName = basename($path);
+                $children_category->link_image = $storageName;
+             }
             $children_category->save();
         }
         return redirect('admin/categories');
