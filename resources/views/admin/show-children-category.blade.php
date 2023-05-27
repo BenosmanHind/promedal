@@ -37,8 +37,12 @@
                                             </div>
 
                                             <div class="col-4 mt-3">
-                                                <a href="{{ asset('edit-children-category/'.$child->id)}}" type="button" class="btn btn-primary shadow btn-xs sharp "><i class="fa fa-pencil"></i></a>
-                                                <a href="{{ asset('delete-children-category/'.$child->id) }}"  class="btn btn-danger shadow btn-xs sharp delete-category"><i class="fa fa-trash"></i></a>
+                                                <form action="{{url('delete-children-category/'.$child->id)}}" method="post">
+                                                    {{csrf_field()}}
+                                                    {{method_field('DELETE')}}
+                                                    <a href="{{ asset('edit-children-category/'.$child->id)}}" type="button" class="btn btn-primary shadow btn-xs sharp "><i class="fa fa-pencil"></i></a>
+                                                    <button class="btn btn-danger shadow btn-xs sharp" onclick="return confirm('Vous voulez vraiment supprimer?')"><i class="fa fa-trash"></i></button>
+                                               </form>
                                             </div>
                                         </div>
                                     @endforeach

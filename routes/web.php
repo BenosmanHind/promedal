@@ -25,7 +25,7 @@ Route::resource('/admin/categories',CategoryController::class);
 Route::resource('/admin/products',ProductController::class);
 Route::get('/show-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'showChildrenCategory']);
 Route::get('/edit-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'editChildrenCategory']);
-Route::get('/delete-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'deleteChildrenCategory']);
+Route::delete('/delete-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'deleteChildrenCategory']);
 Route::put('/update-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'updateChildrenCategory']);
 });
 Auth::routes();
