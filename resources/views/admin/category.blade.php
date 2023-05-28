@@ -32,7 +32,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Désignation*:</label>
-                                    <input type="text"  class="form-control input-default @error('designation') is-invalid @enderror" value="{{old('designation')}}" name="designation" placeholder="designation">
+                                    <input type="text"  class="form-control input-default @error('designation') is-invalid @enderror" value="{{old('designation')}}" name="designation" placeholder="designation" required>
                                         @error('designation')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

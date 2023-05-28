@@ -33,7 +33,7 @@
                                 <div class="row">
                                     <div class="col-6">
                                         <label>Désignation*:</label>
-                                        <input type="text"  class="form-control input-default @error('designation') is-invalid @enderror" value="{{old('designation')}}" name="designation" placeholder="designation">
+                                        <input type="text"  class="form-control input-default @error('designation') is-invalid @enderror" value="{{old('designation')}}" name="designation" placeholder="designation" required>
                                             @error('designation')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="col-6">
                                         <label>Code*:</label>
-                                        <input type="text"  class="form-control input-default @error('code') is-invalid @enderror" value="{{old('code')}}" name="code" placeholder="code">
+                                        <input type="text"  class="form-control input-default @error('code') is-invalid @enderror" value="{{old('code')}}" name="code" placeholder="code"required>
                                             @error('code')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-6 mt-3">
                                         <label>Conditionnement*:</label>
-                                        <input type="text"  class="form-control input-default @error('conditionnement') is-invalid @enderror" value="{{old('conditionnement')}}" name="conditionnement" placeholder="conditionnement">
+                                        <input type="text"  class="form-control input-default @error('conditionnement') is-invalid @enderror" value="{{old('conditionnement')}}" name="conditionnement" placeholder="conditionnement" required>
                                             @error('conditionnement')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="col-6 mt-3">
                                         <label>PU/HT*:</label>
-                                        <input type="text"  class="form-control input-default @error('pu') is-invalid @enderror" value="{{old('pu')}}" name="pu" placeholder="PU">
+                                        <input type="text"  class="form-control input-default @error('pu') is-invalid @enderror" value="{{old('pu')}}" name="pu" placeholder="PU" required>
                                             @error('pu')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -70,9 +70,9 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-6 mt-3">
-                                        <label>Liste des catégories :</label>
-                                            <select class="form-control  @error('category') is-invalid @enderror" id="sel1"  class="selectpicker" data-live-search="true" name="category">
-                                                <option value=0>Nothing selected</option>
+                                        <label>Liste des catégories* :</label>
+                                            <select class="selectpicker form-control  @error('category') is-invalid @enderror" id="sel1"  data-live-search="true" name="category" required>
+                                                <option  disabled selected>selectionner...</option>
                                                 @foreach($categories as $category)
                                                 <option  value="{{$category->id}}" > {{$category->designation}}</option>
                                                     @foreach($category->childrenCategories as $children_category)
