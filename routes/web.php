@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SettingController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +18,13 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::check()){
+        return redirect('/generate-listing');
+    }
+    else{
+        return redirect('login');
+    }
+
 });
 Route::middleware('auth')->group(function () {
 Route::get('/admin', function () {
@@ -23,6 +32,7 @@ Route::get('/admin', function () {
     });
 Route::resource('/admin/categories',CategoryController::class);
 Route::resource('/admin/products',ProductController::class);
+Route::resource('/admin/setting',SettingController::class);
 Route::get('/show-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'showChildrenCategory']);
 Route::get('/edit-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'editChildrenCategory']);
 Route::delete('/delete-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'deleteChildrenCategory']);

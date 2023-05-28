@@ -59,7 +59,7 @@ class LoginController extends Controller
 
         if(auth()->attempt(array($fieldType => $input['username'], 'password' => $input['password'])))
         {
-            return redirect('admin');
+            return redirect('/generate-listing');
         }
         else{
             $error = 'Coordonnées incorrectes. Veuillez réessayer.';

@@ -3,7 +3,7 @@
 
 <style>
     .category{
-        text-align: center; 
+        text-align: center;
         background-color:#009EE2!important;
         font-weight: bold;
         color: #fff;
@@ -11,7 +11,7 @@
     }
 
     .child-category{
-        text-align: center; 
+        text-align: center;
         background-color:#94D4F0!important;
         font-weight: bold;
         color: #fff;
@@ -61,7 +61,7 @@
             <div class="col-md-12 grid-margin">
                 <div class="card">
                     <div class="card-body print-section" id="printable">
-                       
+
                         <table class="table table-striped">
                                 <thead >
                                     <tr class="header-titles" >
@@ -85,7 +85,7 @@
                                                     <td>{{$product->designation}}</td>
                                                     <td>{{$product->conditionnement}}</td>
                                                     <td>{{$product->pu}}</td>
-                                                    <td>{{$product->disponibilite}}</td>
+                                                    <td>@if($product->disponibilite == 1)<i class="fa-solid fa-check"></i> @else <i class="fa fa-xmark"></i> @endif</td>
                                                     @if($categorie->IV)
                                                         @if($loop->first)
                                                             <td class="iv" rowspan="{{count($categorie->products)}}">{{$categorie->IV}}</td>
@@ -111,7 +111,7 @@
                                                     <td>{{$product->designation}}</td>
                                                     <td>{{$product->conditionnement}}</td>
                                                     <td>{{$product->pu}}</td>
-                                                    <td>{{$product->disponibilite}}</td>
+                                                    <td>@if($product->disponibilite == 1)<i class="fa fa-check"></i> @else <i class="fa fa-xmark"></i> @endif</td>
                                                     @if($child->IV)
                                                         @if($loop->first)
                                                             <td class="iv" rowspan="{{count($child->products)}}">{{$child->IV}}</td>
@@ -128,7 +128,7 @@
                                             @endforeach
                                         @endforeach
                                     @endforeach
-                                   
+
                                 </tbody>
                         </table>
                     </div>
@@ -139,11 +139,11 @@
 </div>
 @endsection
 @push('listing-scripts')
-    
+
 <script>
 $('.printMe').click(function(){
     $('#printable').printThis();
 });
-</script> 
+</script>
 
 @endpush

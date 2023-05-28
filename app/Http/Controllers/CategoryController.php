@@ -65,6 +65,7 @@ class CategoryController extends Controller
             $category->link_image = $storageName;
          }
         $category->save();
+        return redirect('admin/categories');
 
     }
 
