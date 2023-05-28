@@ -15,10 +15,12 @@
     <link href="{{ asset('dashboard/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('dashboard/vendor/summernote/summernote.css') }}" rel="stylesheet">
 	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('dashboard/uploader/drop_uploader.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/css/print.css')}}" media="print">
 
 
 </head>
+
+
 
 <body>
 
@@ -48,9 +50,8 @@
         <div class="nav-header">
             <a href="{{ asset('/admin') }}" class="brand-logo">
                 <img class="logo-abbr" src="{{ asset('dashboard/images/logo-white.png') }}" alt="">
-                <img class="logo-abbr" src="{{ asset('dashboard/images/logo-text-white.png') }}" alt="">
-
-
+				<img class="logo-compact" src="{{asset('Dashboard/images/logo-text-white.png')}}" alt="">
+                <img class="brand-title" src="{{asset('Dashboard/images/logo-text-white.png')}}" alt="">
             </a>
 
             <div class="nav-control">
@@ -626,7 +627,7 @@
             <div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
 				<li class="nav-label first">Main Menu</li>
-						<li><a href="{{url('/admin')}}" class="ai-icon" aria-expanded="false">
+						<li><a href="{{url('/generate-listing')}}" class="ai-icon" aria-expanded="false">
 							<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="svg-main-icon">
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <rect x="0" y="0" width="24" height="24"/>
@@ -636,7 +637,7 @@
                                     <rect fill="#000000" opacity="0.3" x="7" y="11" width="3" height="6" rx="1.5"/>
                                 </g>
                             </svg>
-							<span class="nav-text">Dashboard</span>
+							<span class="nav-text">Générer listing</span>
 						</a></li>
 
                         <li><a class=" ai-icon" href="{{asset('admin/categories')}}" aria-expanded="false">
@@ -704,16 +705,23 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
+
     <script src="{{ asset('dashboard/vendor/global/global.min.js') }}"></script>
 	<script src="{{ asset('dashboard/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('dashboard/vendor/chart.js/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('dashboard/js/custom.min.js') }}"></script>
+
+	<script src="{{asset('/print/printThis.js')}}"></script>
+
 	<!-- Apex Chart -->
 	<script src="{{ asset('dashboard/vendor/apexchart/apexchart.js') }}"></script>
 
     <!-- Vectormap -->
 	<!-- Chart piety plugin files -->
     <script src="{{ asset('dashboard/vendor/peity/jquery.peity.min.js') }}"></script>
+
+
+
 
     <!-- Chartist -->
     <script src="{{ asset('dashboard/vendor/chartist/js/chartist.min.js') }}"></script>
@@ -756,38 +764,8 @@
 	})(jQuery);
 	</script>
 
-<script>
 
-    $(document).ready(function(){
-    $('.image').drop_uploader({
-        uploader_text: 'Drop files to upload, or',
-        browse_text: 'Browse',
-        only_one_error_text: 'Only one file allowed',
-        not_allowed_error_text: 'File type is not allowed',
-        big_file_before_error_text: 'Files, bigger than',
-        big_file_after_error_text: 'is not allowed',
-        allowed_before_error_text: 'Only',
-        allowed_after_error_text: 'files allowed',
-        browse_css_class: 'button button-primary',
-        browse_css_selector: 'file_browse',
-        uploader_icon: '',
-        file_icon: '',
-        progress_color: '#4a90e2',
-        time_show_errors: 5,
-        layout: 'thumbnails',
-        method: 'normal',
-        chunk_size: 1000000,
-        concurrent_uploads: 5,
-        show_percentage: true,
-        existing_files: false,
-        existing_files_removable: true,
-        send_existing_files: false,
-        url: 'ajax_upload.php',
-        delete_url: 'ajax_delete.php',
-    });
-});
-
-    </script>
     @stack('delete-category-script')
+    @stack('listing-scripts')
 </body>
 </html>

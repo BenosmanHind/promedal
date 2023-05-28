@@ -19,6 +19,7 @@ class ProductController extends Controller
         return view('admin.add-product',compact('categories'));
     }
     public function store(Request $request){
+
         $product = new Product();
         $product->designation = $request->designation;
         $product->pu = $request->pu;

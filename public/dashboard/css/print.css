@@ -1,0 +1,51 @@
+.category{
+    text-align: center; 
+    font-weight: bold;
+    color: #fff;
+    font-size: 20px;
+    background-image: linear-gradient(
+        rgba(0, 158, 226, 1),
+        rgba(0, 158, 226, 1)
+      );
+    print-color-adjust: exact;
+}
+
+.child-category{
+    text-align: center; 
+    background-image: linear-gradient(
+        rgba(148, 212, 240, 1),
+        rgba(148, 212, 240, 1)
+      );
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+    print-color-adjust: exact;
+}
+
+.iv{
+    background-image: linear-gradient(
+        rgba(230, 237, 244, 1),
+        rgba(230, 237, 244, 1)
+      );
+    font-size: 12px;
+    max-width: 50px;
+    text-align: center;
+    print-color-adjust: exact;
+}
+
+.image-product{
+    background-color: #fff;
+    width: 150px!important;
+}
+
+.header-title{
+   
+    color: #fff;
+    background-image: linear-gradient(
+        rgba(6, 71, 151, 1),
+        rgba(6, 71, 151, 1)
+      );
+    print-color-adjust: exact;
+}
+
+
