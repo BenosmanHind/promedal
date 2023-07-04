@@ -111,7 +111,7 @@
                                                     <td>{{$product->designation}}</td>
                                                     <td>{{$product->conditionnement}}</td>
                                                     <td>{{$product->pu}}</td>
-                                                    <td>@if($product->disponibilite == 1)<i class="fa fa-check"></i> @else <i class="fa fa-xmark"></i> @endif</td>
+                                                    <td>@if($product->disponibilite == 1)D</i> @else Ind @endif</td>
                                                     @if($child->IV)
                                                         @if($loop->first)
                                                             <td class="iv" rowspan="{{count($child->products)}}">{{$child->IV}}</td>
