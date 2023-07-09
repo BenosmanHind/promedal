@@ -57,13 +57,16 @@ class CategoryController extends Controller
         $category->designation = $request->designation;
         $category->description = $request->description;
         $category->IV = $request->IV;
-
+        $previousImage = $category->link_image;
         if($request->image){
             $destination = 'public/images/categories';
             $path = $request->image->store($destination);
             $storageName = basename($path);
             $category->link_image = $storageName;
          }
+         else {
+            $category->link_image = $previousImage; // Réassigne l'ancienne valeur à link_image
+        }
         $category->save();
         return redirect('admin/categories');
 
@@ -88,7 +91,6 @@ class CategoryController extends Controller
     public function updateChildrenCategory($id , Request $request){
         $children_category = Childrencategory::find($id);
         $children_category->designation = $request->designation;
-            $children_category->link_image = $request->image;
             $children_category->description = $request->description;
             $children_category->IV = $request->IV;
             if($request->image){

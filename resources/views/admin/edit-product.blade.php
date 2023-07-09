@@ -90,9 +90,16 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-12 mt-3">
+                                    <div class="col-6 mt-3">
                                         <label >Photo : </label>
                                         <input class="form-control" name="image" type="file">
+                                    </div>
+                                    <div class="col-6 mt-3">
+                                        <label>Disponible ?</label><br>
+                                        <div class="form-group mb-0">
+                                            <label class="radio-inline mr-3"><input type="radio" name="disponibilite" value="1" @if($product->disponibilite == 1) checked @endif> Oui</label>
+                                            <label class="radio-inline mr-3"><input type="radio" name="disponibilite" value="0" @if($product->disponibilite == 0) checked @endif> Non</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
