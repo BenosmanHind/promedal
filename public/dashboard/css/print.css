@@ -49,3 +49,32 @@
 }
 
 
+
+* {
+  -webkit-print-color-adjust: exact; /* For Chrome and Safari */
+  color-adjust: exact; /* For Firefox */
+}
+
+
+.print-page {
+  page-break-after: always; /* Add page break after each print-page div */
+}
+
+.print-page:last-child {
+  page-break-after: avoid; /* Prevent page break after the last print-page div */
+}
+
+
+.print-content{
+  width: 26cm;
+  height: 37cm;
+background-image: url('/pg-promedal.jpg');
+background-repeat: no-repeat;
+background-position: top left;
+background-size: cover;
+page-break-inside: avoid; 
+-webkit-print-color-adjust: exact; /* For Chrome and Safari */
+color-adjust: exact; /* For Firefox */
+print-color-adjust: exact;
+}
+

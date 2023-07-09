@@ -32,8 +32,20 @@
         background-color: #064797;
         color: #fff;
     }
+    .print-content{
+    width: 100%;
+    height: auto;
+    background-image: url('/pg-promedal.jpg');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover;
+    }
+
+  
+  
 
 </style>
+
 <div class="content-body">
     <div class="container-fluid">
         <div class="row page-titles mx-0">
@@ -61,6 +73,14 @@
             <div class="col-md-12 grid-margin">
                 <div class="card">
                     <div class="card-body print-section" id="printable">
+
+                        <div class="print-page">
+                            <div class="print-content">
+                              <!-- Your content for the first page -->
+                            </div>
+                          </div>
+
+                       
 
                         <table class="table table-striped">
                                 <thead >
