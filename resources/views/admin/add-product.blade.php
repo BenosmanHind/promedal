@@ -102,6 +102,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-6 mt-3">
+                                        <label >Flag : </label>
+                                        <input class="form-control" name="flag" type="text">
+                                    </div>
+
+                                </div>
+                                <div class="row">
                                     <div class="col-12 mt-3">
                                         <label >Description : </label>
                                         <textarea class="form-control" name="description" rows="3"></textarea>

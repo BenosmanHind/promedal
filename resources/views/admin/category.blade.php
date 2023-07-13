@@ -60,6 +60,10 @@
                                     <input class="form-control" name="IV" type="text">
                                 </div>
                                 <div class="form-group">
+                                    <label >Flag : </label>
+                                    <input class="form-control" name="flag" type="text">
+                                </div>
+                                <div class="form-group">
                                     <label >Description : </label>
                                     <textarea class="form-control" name="description" rows="3"></textarea>
                                 </div>

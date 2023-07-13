@@ -26,7 +26,7 @@ class ProductController extends Controller
         $product->code = $request->code;
         $product->conditionnement = $request->conditionnement;
         $product->IV = $request->IV;
-
+        $product->flag = $request->flag;
         $product->disponibilite = $request->disponibilite;
         $product->slug = str::slug($request->designation);
 
@@ -77,6 +77,7 @@ class ProductController extends Controller
      $product->code = $request->code;
      $product->conditionnement = $request->conditionnement;
      $product->IV = $request->IV;
+     $product->flag = $request->flag;
      $product->slug = str::slug($request->designation);
      $product->disponibilite = $request->disponibilite;
      if($request->image){

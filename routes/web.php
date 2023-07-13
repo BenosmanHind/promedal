@@ -42,3 +42,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/generate-listing', [App\Http\Controllers\HomeController::class, 'generate']);
+Route::post('/generate-listing', [App\Http\Controllers\HomeController::class, 'listing']);

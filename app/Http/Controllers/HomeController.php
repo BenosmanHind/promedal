@@ -32,7 +32,21 @@ class HomeController extends Controller
 
     public function generate()
     {
-        $categories = Category::with('childrenCategories')->get(); 
-        return view('admin.report-listing',compact('categories'));
+        $categories = Category::with('childrenCategories')->get();
+        return view('admin.generate-report',compact('categories'));
+    }
+
+    public function listing(Request $request)
+    {
+        $categories = Category::whereIn('id',$request->categories)
+                                ->orderBy('flag', 'asc')
+                                ->with(['childrenCategories' => function ($query) {
+                                    $query->orderBy('flag', 'asc');
+                                }])
+                                ->get();
+
+        $disponibilite = $request->disponibilite;
+        $IV = $request->IV;
+        return view('admin.report-listing',compact('categories','disponibilite','IV'));
     }
 }

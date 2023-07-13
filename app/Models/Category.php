@@ -15,6 +15,6 @@ class Category extends Model
 
     public function products(): MorphMany
     {
-        return $this->morphMany(Product::class, 'productable');
+        return $this->morphMany(Product::class, 'productable')->orderBy('flag', 'asc');
     }
 }

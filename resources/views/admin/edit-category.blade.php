@@ -53,6 +53,12 @@
                                  </div>
                                  <div class="row">
                                     <div class="col-6 mt-3">
+                                    <label >Flag : </label>
+                                    <input class="form-control" name="flag" type="text" value="{{ $category->flag }}">
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="col-6 mt-3">
                                     <label>Photo*:</label>
                                         <input type="file"  class="form-control input-default " name="image" >
                                     </div>

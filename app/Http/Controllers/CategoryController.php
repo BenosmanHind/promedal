@@ -21,7 +21,7 @@ class CategoryController extends Controller
             $category->designation = $request->designation;
             $category->description = $request->description;
             $category->IV = $request->IV;
-
+            $category->flag = $request->flag;
             if($request->image){
                 $destination = 'public/images/categories';
                 $path = $request->image->store($destination);
@@ -37,6 +37,7 @@ class CategoryController extends Controller
             $children_category->description = $request->description;
             $children_category->category_id = $request->category;
             $children_category->IV = $request->IV;
+            $children_category->flag = $request->flag;
             if($request->image){
                 $destination = 'public/images/categories';
                 $path = $request->image->store($destination);
@@ -57,6 +58,7 @@ class CategoryController extends Controller
         $category->designation = $request->designation;
         $category->description = $request->description;
         $category->IV = $request->IV;
+        $category->flag = $request->flag;
         $previousImage = $category->link_image;
         if($request->image){
             $destination = 'public/images/categories';
@@ -93,6 +95,7 @@ class CategoryController extends Controller
         $children_category->designation = $request->designation;
             $children_category->description = $request->description;
             $children_category->IV = $request->IV;
+            $children_category->flag = $request->flag;
             if($request->image){
                 $destination = 'public/images/categories';
                 $path = $request->image->store($destination);
