@@ -33,6 +33,7 @@ Route::get('/admin', function () {
 Route::resource('/admin/categories',CategoryController::class);
 Route::resource('/admin/products',ProductController::class);
 Route::resource('/admin/setting',SettingController::class);
+Route::post('/admin/update-setting/{id_one}/{id_two}', [App\Http\Controllers\SettingController::class, 'updateSetting']);
 Route::get('/show-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'showChildrenCategory']);
 Route::get('/edit-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'editChildrenCategory']);
 Route::delete('/delete-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'deleteChildrenCategory']);

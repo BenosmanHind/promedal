@@ -9,14 +9,20 @@ class SettingController extends Controller
 {
     //
     public function index(){
-        $setting = Setting::first();
-        return view('admin.setting',compact('setting'));
+        $setting_one = Setting::where('id',1)->first();
+        $setting_two = Setting::where('id',2)->first();
+        return view('admin.setting',compact('setting_one','setting_two'));
     }
-    public function update(Request $request , $id){
-        $setting = Setting::find($id);
-        $setting->name = $request->name;
-        $setting->value = $request->value;
-        $setting->save();
+    public function updateSetting(Request $request , $id_one , $id_two){
+        $setting_one = Setting::find($id_one);
+        $setting_one->name = $request->name_one;
+        $setting_one->value = $request->value_one;
+        $setting_one->save();
+
+        $setting_two = Setting::find($id_two);
+        $setting_two->name = $request->name_two;
+        $setting_two->value = $request->value_two;
+        $setting_two->save();
         return redirect()->back();
     }
 }

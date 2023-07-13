@@ -28,20 +28,32 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{url('admin/setting/'.$setting->id)}}" method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="_method" value="PUT">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label>Nom*:</label>
-                                        <input type="text"  class="form-control input-default " value="{{$setting->name}}" name="name" placeholder="nom" required>
+                            <form action="{{url('/admin/update-setting/'.$setting_one->id.'/'.$setting_two->id)}}" method="POST" enctype="multipart/form-data">
 
+                                @csrf
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label>Nom*:</label>
+                                            <input type="text"  class="form-control input-default " value="{{$setting_one->name}}" name="name_one" placeholder="nom" required>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Valeur*:</label>
+                                            <input type="date"  class="form-control input-default" value="{{$setting_one->value}}" name="value_one" required>
+                                        </div>
                                     </div>
-                                    <div class="col-6">
-                                        <label>Date*:</label>
-                                        <input type="date"  class="form-control input-default" value="{{$setting->value}}" name="value" required>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label>Nom*:</label>
+                                            <input type="text"  class="form-control input-default " value="{{$setting_two->name}}" name="name_two" placeholder="nom" required>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <label>Valeur*:</label>
+                                            <input type="text"  class="form-control input-default" value="{{$setting_two->value}}" name="value_two" required>
+                                        </div>
                                     </div>
-                                </div>
+
                                <button type="submit"  class="btn btn-primary mt-3">Enregistrer</button>
                             </form>
                         </div>
