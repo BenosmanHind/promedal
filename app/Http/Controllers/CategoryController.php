@@ -74,6 +74,8 @@ class CategoryController extends Controller
 
     }
 
+
+
     public function showChildrenCategory($id){
         $category = Category::find($id);
         return view('admin.show-children-category',compact('category'));
@@ -85,7 +87,12 @@ class CategoryController extends Controller
     }
 
     public function deleteChildrenCategory($id){
+
         $category = Childrencategory::find($id);
+        $count_products = $category->products->count();
+        if($count_products > 0){
+            return back()->with('error','Impossible de supprimer cette catégorie car elle contient des produits.!');
+        }
         $category->delete();
         return redirect()->back();
     }
