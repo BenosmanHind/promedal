@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-6 mt-3">
-                                        <label>Liste des catégories* :</label>
+                                        <label>Catégorie parente* :</label>
                                             <select class="selectpicker form-control  @error('category') is-invalid @enderror" id="sel1"  data-live-search="true" name="category" required>
                                                 <option  disabled selected>selectionner...</option>
                                                 @foreach($categories as $category)
@@ -82,8 +82,8 @@
                                             </select>
                                     </div>
                                     <div class="col-6 mt-3">
-                                        <label >IV : </label>
-                                        <input class="form-control" name="IV" type="text">
+                                        <label >Informations de vente : </label>
+                                        <input class="form-control" name="IV" type="text" placeholder="informations de vente">
                                     </div>
 
                                 </div>
@@ -103,8 +103,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-6 mt-3">
-                                        <label >Flag : </label>
-                                        <input class="form-control" name="flag" type="text">
+                                        <label > Numéro d'ordre : </label>
+                                        <input class="form-control" name="flag" type="text" placeholder="numéro d'ordre">
                                     </div>
 
                                 </div>

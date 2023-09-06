@@ -86,6 +86,21 @@ class CategoryController extends Controller
         return view('admin.edit-children-category',compact('category'));
     }
 
+    public function deleteCategory($id){
+
+        $category = Category::find($id);
+        $count_products = $category->products->count();
+        $count_children_categories = Childrencategory::where('category_id',$id)->count();
+        if($count_children_categories > 0){
+            return back()->with('error','Impossible de supprimer cette catégorie car elle contient des sous catégories.!');
+        }
+        if($count_products > 0){
+            return back()->with('error','Impossible de supprimer cette catégorie car elle contient des produits.!');
+        }
+        $category->delete();
+        return redirect()->back();
+    }
+
     public function deleteChildrenCategory($id){
 
         $category = Childrencategory::find($id);

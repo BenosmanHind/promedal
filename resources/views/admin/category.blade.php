@@ -17,10 +17,9 @@
                 </ol>
             </div>
         </div>
-
+        @include('flash-message')
         <!-- row -->
         <div class="row ">
-
             <div class="col-xl-5 col-lg-5">
                 <div class="card">
                     <div class="card-header">
@@ -40,7 +39,7 @@
                                         @enderror
                                 </div>
                                 <div class="form-group">
-                                <label>Liste des catégories :</label>
+                                <label>Catégorie parente :</label>
                                     <select class="form-control  @error('category') is-invalid @enderror" id="sel1"  class="selectpicker" data-live-search="true" name="category">
                                         <option value=0>Nothing selected</option>
                                         @foreach($categories as $category)
@@ -56,12 +55,12 @@
                                     <input class="form-control" name="image" type="file">
                                 </div>
                                 <div class="form-group">
-                                    <label >IV : </label>
-                                    <input class="form-control" name="IV" type="text">
+                                    <label >Informations de vente : </label>
+                                    <input class="form-control" name="IV" type="text" placeholder="informations de vente">
                                 </div>
                                 <div class="form-group">
-                                    <label >Flag : </label>
-                                    <input class="form-control" name="flag" type="text">
+                                    <label > Numéro d'ordre : </label>
+                                    <input class="form-control" name="flag" type="text" placeholder="numéro d'ordre">
                                 </div>
                                 <div class="form-group">
                                     <label >Description : </label>
@@ -108,7 +107,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <form action="{{url('admin/categories/'.$category->id)}}" method="post">
+                                            <form action="{{url('delete-category/'.$category->id)}}" method="post">
                                                 {{csrf_field()}}
                                                 {{method_field('DELETE')}}
                                                 <div class="d-flex">

@@ -42,8 +42,8 @@
                                             @enderror
                                     </div>
                                     <div class="col-6">
-                                        <label>IV*:</label>
-                                        <input type="text"  class="form-control input-default @error('IV') is-invalid @enderror" value="{{$category->IV}}" name="IV" placeholder="IV">
+                                        <label>Informations de vente*:</label>
+                                        <input type="text"  class="form-control input-default @error('IV') is-invalid @enderror" value="{{$category->IV}}" name="IV" placeholder="informations de vente">
                                             @error('IV')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                                  </div>
                                  <div class="row">
                                     <div class="col-6 mt-3">
-                                    <label >Flag : </label>
+                                    <label >Numéro d'ordre : </label>
                                     <input class="form-control" name="flag" type="text" value="{{ $category->flag }}">
                                     </div>
                                 </div>

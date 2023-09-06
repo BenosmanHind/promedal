@@ -37,6 +37,7 @@ Route::post('/admin/update-setting/{id_one}/{id_two}', [App\Http\Controllers\Set
 Route::get('/show-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'showChildrenCategory']);
 Route::get('/edit-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'editChildrenCategory']);
 Route::delete('/delete-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'deleteChildrenCategory']);
+Route::delete('/delete-category/{id}', [App\Http\Controllers\CategoryController::class, 'deleteCategory']);
 Route::put('/update-children-category/{id}', [App\Http\Controllers\CategoryController::class, 'updateChildrenCategory']);
 });
 Auth::routes();
