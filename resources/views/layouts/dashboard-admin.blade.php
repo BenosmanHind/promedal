@@ -19,7 +19,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Montserrat:wght@800&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Montserrat:wght@800&display=swap" rel="stylesheet">
 
 </head>
 
@@ -51,7 +51,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="{{ asset('/admin') }}" class="brand-logo">
+            <a href="{{ asset('/generate-listing') }}" class="brand-logo">
                 <img class="logo-abbr" src="{{ asset('dashboard/images/logo-white.png') }}" alt="">
 				<img class="logo-compact" src="{{asset('Dashboard/images/logo-text-white.png')}}" alt="">
                 <img class="brand-title" src="{{asset('Dashboard/images/logo-text-white.png')}}" alt="">
