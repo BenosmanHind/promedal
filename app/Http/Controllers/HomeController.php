@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Setting;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -47,6 +49,24 @@ class HomeController extends Controller
 
         $disponibilite = $request->disponibilite;
         $IV = $request->IV;
-        return view('admin.report-listing',compact('categories','disponibilite','IV'));
+        $listing_name = Setting::where('name','listing')->first();
+
+
+        $listing_date = Setting::where('name','Date')->first();
+
+        $carbonDate = Carbon::createFromFormat('Y-m-d', $listing_date->value);
+
+        // Obtenir le nom du mois en français (mai)
+        $monthName = $carbonDate->locale('fr')->monthName;
+
+        // Obtenir l'année (2023)
+        $year = $carbonDate->year;
+
+        // Concaténer le résultat
+        $listing_date  = ucfirst($monthName) . ' ' . $year;
+
+    
+      
+        return view('admin.report-listing',compact('categories','disponibilite','IV','listing_name','listing_date'));
     }
 }

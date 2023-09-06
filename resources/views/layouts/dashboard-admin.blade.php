@@ -17,6 +17,9 @@
 	<link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="{{asset('dashboard/css/print.css')}}" media="print">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Montserrat:wght@800&display=swap" rel="stylesheet"> 
 
 </head>
 
@@ -209,7 +212,8 @@
         ***********************************-->
 
         <!--**********************************
-           Support ticket button end
+           Support ticket but
+           ton end
         ***********************************-->
 
 

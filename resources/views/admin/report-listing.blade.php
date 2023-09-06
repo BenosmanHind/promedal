@@ -41,8 +41,8 @@
     background-size: cover;
     }
 
-
-
+  
+  
 
 </style>
 
@@ -76,11 +76,14 @@
 
                         <div class="print-page">
                             <div class="print-content">
+                        
                               <!-- Your content for the first page -->
                             </div>
-                          </div>
+                            <div class="text-listing" style="font-size: 12px; display:none;">{{$listing_name->value}} <br> {{$listing_date}}</div>
+                            <div class="no-print" style="font-size: 12px;">{{$listing_name->value}}  {{$listing_date}}</div>
+                        </div>
 
-
+                       
 
                         <table class="table table-striped">
                                 <thead >
@@ -89,12 +92,8 @@
                                         <th  class="header-title"  scope="col"> Désignation</th>
                                         <th  class="header-title"  scope="col"> Cond.</th>
                                         <th  class="header-title"  scope="col"> P.U/HT</th>
-                                        @if($disponibilite == 1)
                                         <th  class="header-title"  scope="col"> Dispo.</th>
-                                        @endif
-                                        @if($IV == 1)
                                         <th  class="header-title"  scope="col"> I.V</th>
-                                        @endif
                                         <th  class="header-title" scope="col"> Image</th>
                                     </tr>
                                 </thead>
@@ -109,17 +108,13 @@
                                                     <td>{{$product->designation}}</td>
                                                     <td>{{$product->conditionnement}}</td>
                                                     <td>{{$product->pu}}</td>
-                                                    @if($disponibilite == 1)
                                                     <td>@if($product->disponibilite == 1)<i class="fa-solid fa-check"></i> @else <i class="fa fa-xmark"></i> @endif</td>
-                                                    @endif
-                                                    @if($IV == 1)
-                                                        @if($categorie->IV)
-                                                            @if($loop->first)
-                                                                <td class="iv" rowspan="{{count($categorie->products)}}">{{$categorie->IV}}</td>
-                                                            @endif
-                                                        @else
-                                                            <td class="iv" >{{$product->IV}}</td>
+                                                    @if($categorie->IV)
+                                                        @if($loop->first)
+                                                            <td class="iv" rowspan="{{count($categorie->products)}}">{{$categorie->IV}}</td>
                                                         @endif
+                                                    @else
+                                                        <td class="iv" >{{$product->IV}}</td>
                                                     @endif
 
                                                     @if($loop->first)
@@ -139,17 +134,13 @@
                                                     <td>{{$product->designation}}</td>
                                                     <td>{{$product->conditionnement}}</td>
                                                     <td>{{$product->pu}}</td>
-                                                    @if($disponibilite == 1)
                                                     <td>@if($product->disponibilite == 1)D</i> @else Ind @endif</td>
-                                                    @endif
-                                                    @if($IV == 1)
-                                                        @if($child->IV)
-                                                            @if($loop->first)
-                                                                <td class="iv" rowspan="{{count($child->products)}}">{{$child->IV}}</td>
-                                                            @endif
-                                                        @else
-                                                            <td class="iv" >{{$product->IV}}</td>
+                                                    @if($child->IV)
+                                                        @if($loop->first)
+                                                            <td class="iv" rowspan="{{count($child->products)}}">{{$child->IV}}</td>
                                                         @endif
+                                                    @else
+                                                        <td class="iv" >{{$product->IV}}</td>
                                                     @endif
                                                     @if($loop->first)
                                                         <td class="image-product" rowspan="{{count($child->products)}}">
