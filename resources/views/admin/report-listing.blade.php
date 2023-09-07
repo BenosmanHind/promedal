@@ -43,7 +43,6 @@
 
 
 
-
 </style>
 
 <div class="content-body">
@@ -103,7 +102,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($categories as $categorie)
-                                            <tr>
+                                            <tr class="category-row">
                                                 <td scope="row" colspan="7" class="category print-bg-blue" >{{$categorie->designation}}</td>
                                             </tr>
                                             @foreach ($categorie->products as $product)
@@ -124,11 +123,16 @@
                                                             <td class="iv" >{{$product->IV}}</td>
                                                         @endif
                                                     @endif
-
-                                                    @if($loop->first)
-                                                        <td class="image-product" rowspan="{{count($categorie->products)}}">
-                                                           <img width="120px" src="{{asset('storage/images/categories/'.$categorie->link_image)}}" alt="">
-                                                        </td>
+                                                    @if($categorie->link_image)
+                                                        @if($loop->first)
+                                                            <td class="image-product" rowspan="{{count($categorie->products)}}">
+                                                            <img width="120px" src="{{asset('storage/images/categories/'.$categorie->link_image)}}" alt="">
+                                                            </td>
+                                                        @endif
+                                                    @else
+                                                    <td class="image-product" >
+                                                        <img width="120px" src="{{asset('storage/images/products/'.$product->link_image)}}" alt="">
+                                                    </td>
                                                     @endif
                                                 </tr>
                                             @endforeach
@@ -137,7 +141,7 @@
                                                 <td scope="row" colspan="7" class="child-category" >{{$child->designation}}</td>
                                             </tr>
                                             @foreach ($child->products as $product)
-                                                <tr>
+                                                <tr class="child-category-row">
                                                     <td>{{$product->code}}</td>
                                                     <td>{{$product->designation}}</td>
                                                     <td>{{$product->conditionnement}}</td>
@@ -154,9 +158,15 @@
                                                             <td class="iv" >{{$product->IV}}</td>
                                                         @endif
                                                     @endif
-                                                    @if($loop->first)
-                                                        <td class="image-product" rowspan="{{count($child->products)}}">
-                                                           <img width="120px" src="{{asset('storage/images/categories/'.$child->link_image)}}" alt="">
+                                                    @if($child->link_image)
+                                                        @if($loop->first)
+                                                            <td class="image-product" rowspan="{{count($child->products)}}">
+                                                            <img width="120px" src="{{asset('storage/images/categories/'.$child->link_image)}}" alt="">
+                                                            </td>
+                                                        @endif
+                                                    @else
+                                                        <td class="image-product">
+                                                        <img width="120px" src="{{asset('storage/images/products/'.$product->link_image)}}" alt="">
                                                         </td>
                                                     @endif
                                                 </tr>
