@@ -107,7 +107,13 @@
                                         <label >Flag : </label>
                                         <input class="form-control" name="flag" type="text" value="{{ $product->flag }}">
                                     </div>
-
+                                    <div class="col-6 mt-3">
+                                        <label>Visible ?</label><br>
+                                        <div class="form-group mb-0">
+                                            <label class="radio-inline mr-3"><input type="radio" name="visible" value="1"@if($product->visible == 1) checked @endif> Oui</label>
+                                            <label class="radio-inline mr-3"><input type="radio" name="visible" value="0"@if($product->visible == 0) checked @endif> Non</label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 mt-3">

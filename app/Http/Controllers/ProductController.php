@@ -28,6 +28,7 @@ class ProductController extends Controller
         $product->IV = $request->IV;
         $product->flag = $request->flag;
         $product->disponibilite = $request->disponibilite;
+        $product->visible = $request->visible;
         $product->slug = str::slug($request->designation);
 
         if($request->image){
@@ -80,6 +81,7 @@ class ProductController extends Controller
      $product->flag = $request->flag;
      $product->slug = str::slug($request->designation);
      $product->disponibilite = $request->disponibilite;
+     $product->visible = $request->visible;
      if($request->image){
          $destination = 'public/images/products';
          $path = $request->image->store($destination);
