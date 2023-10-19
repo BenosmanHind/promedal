@@ -48,7 +48,10 @@
     print-color-adjust: exact;
 }
 
+.th-iv{
+    width: 150px;
 
+   }
 
 * {
   -webkit-print-color-adjust: exact; /* For Chrome and Safari */

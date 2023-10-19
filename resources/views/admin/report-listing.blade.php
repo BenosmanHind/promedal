@@ -42,7 +42,10 @@
     background-size: cover;
     }
 
+   .th-iv{
+    width: 150px;
 
+   }
 
 </style>
 
@@ -96,7 +99,7 @@
                                         <th  class="header-title"  scope="col"> Dispo.</th>
                                         @endif
                                         @if($IV == 1)
-                                        <th  class="header-title"  scope="col"> I.V</th>
+                                        <th  class="header-title th-iv"  scope="col"> I.V</th>
                                         @endif
                                         <th  class="header-title" scope="col"> Image</th>
                                     </tr>
