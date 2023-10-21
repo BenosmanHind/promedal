@@ -106,7 +106,13 @@
                                         <label > Numéro d'ordre : </label>
                                         <input class="form-control" name="flag" type="text" placeholder="numéro d'ordre">
                                     </div>
-
+                                    <div class="col-6 mt-3">
+                                        <label>Visible ?</label><br>
+                                        <div class="form-group mb-0">
+                                            <label class="radio-inline mr-3"><input type="radio" name="visible" value="1" checked> Oui</label>
+                                            <label class="radio-inline mr-3"><input type="radio" name="visible" value="0"> Non</label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 mt-3">

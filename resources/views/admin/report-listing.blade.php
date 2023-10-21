@@ -23,6 +23,7 @@
         font-size: 12px;
         max-width: 50px;
         text-align: center;
+
     }
     .image-product{
         background-color: #fff;
@@ -41,7 +42,10 @@
     background-size: cover;
     }
 
+   .th-iv{
+    width: 150px;
 
+   }
 
 </style>
 
@@ -95,7 +99,7 @@
                                         <th  class="header-title"  scope="col"> Dispo.</th>
                                         @endif
                                         @if($IV == 1)
-                                        <th  class="header-title"  scope="col"> I.V</th>
+                                        <th  class="header-title th-iv"  scope="col"> I.V</th>
                                         @endif
                                         <th  class="header-title" scope="col"> Image</th>
                                     </tr>
@@ -106,70 +110,76 @@
                                                 <td scope="row" colspan="7" class="category print-bg-blue" >{{$categorie->designation}}</td>
                                             </tr>
                                             @foreach ($categorie->products as $product)
-                                                <tr>
-                                                    <td>{{$product->code}}</td>
-                                                    <td>{{$product->designation}}</td>
-                                                    <td>{{$product->conditionnement}}</td>
-                                                    <td>{{$product->pu}}</td>
-                                                    @if($disponibilite == 1)
-                                                    <td>@if($product->disponibilite == 1)D @else N/D @endif</td>
-                                                    @endif
-                                                    @if($IV == 1)
-                                                        @if($categorie->IV)
-                                                            @if($loop->first)
+                                                @if($product->visible == 1)
+                                                    <tr>
+                                                        <td>{{$product->code}}</td>
+                                                        <td>{{$product->designation}}</td>
+                                                        <td>{{$product->conditionnement}}</td>
+                                                        <td>{{$product->pu}}</td>
+                                                        @if($disponibilite == 1)
+                                                        <td>@if($product->disponibilite == 1)D @else N/D @endif</td>
+                                                        @endif
+                                                        @if($IV == 1)
+                                                            @if($categorie->IV)
+                                                                @if($loop->first)
                                                                 <td class="iv" rowspan="{{count($categorie->products)}}">{{$categorie->IV}}</td>
+                                                                @endif
+                                                            @else
+
+                                                                <td class="iv" >{{$product->IV}}</td>
+                                                            @endif
+                                                        @endif
+                                                        @if($categorie->link_image)
+                                                            @if($loop->first)
+                                                                <td class="image-product" rowspan="{{count($categorie->products)}}">
+                                                                <img width="120px" src="{{asset('storage/images/categories/'.$categorie->link_image)}}" alt="">
+                                                                </td>
                                                             @endif
                                                         @else
-                                                            <td class="iv" >{{$product->IV}}</td>
+                                                        <td class="image-product" >
+                                                            <img width="120px" src="{{asset('storage/images/products/'.$product->link_image)}}" alt="">
+                                                        </td>
                                                         @endif
-                                                    @endif
-                                                    @if($categorie->link_image)
-                                                        @if($loop->first)
-                                                            <td class="image-product" rowspan="{{count($categorie->products)}}">
-                                                            <img width="120px" src="{{asset('storage/images/categories/'.$categorie->link_image)}}" alt="">
-                                                            </td>
-                                                        @endif
-                                                    @else
-                                                    <td class="image-product" >
-                                                        <img width="120px" src="{{asset('storage/images/products/'.$product->link_image)}}" alt="">
-                                                    </td>
-                                                    @endif
-                                                </tr>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         @foreach ($categorie->childrenCategories as $child)
                                             <tr>
                                                 <td scope="row" colspan="7" class="child-category" >{{$child->designation}}</td>
                                             </tr>
                                             @foreach ($child->products as $product)
-                                                <tr class="child-category-row">
-                                                    <td>{{$product->code}}</td>
-                                                    <td>{{$product->designation}}</td>
-                                                    <td>{{$product->conditionnement}}</td>
-                                                    <td>{{$product->pu}}</td>
-                                                    @if($disponibilite == 1)
-                                                    <td>@if($product->disponibilite == 1)D</i> @else N/D @endif</td>
-                                                    @endif
-                                                    @if($IV == 1)
-                                                        @if($child->IV)
-                                                            @if($loop->first)
+                                                @if($product->visible == 1)
+                                                    <tr class="child-category-row">
+                                                        <td>{{$product->code}}</td>
+                                                        <td>{{$product->designation}}</td>
+                                                        <td>{{$product->conditionnement}}</td>
+                                                        <td>{{$product->pu}}</td>
+                                                        @if($disponibilite == 1)
+                                                        <td>@if($product->disponibilite == 1)D</i> @else N/D @endif</td>
+                                                        @endif
+                                                        @if($IV == 1)
+                                                            @if($child->IV)
+                                                                @if($loop->first)
                                                                 <td class="iv" rowspan="{{count($child->products)}}">{{$child->IV}}</td>
+                                                                @endif
+                                                            @else
+                                                               <td class="iv" >{{$product->IV}}</td>
+                                                            @endif
+                                                        @endif
+                                                        @if($child->link_image)
+                                                            @if($loop->first)
+                                                                <td class="image-product" rowspan="{{count($child->products)}}">
+                                                                <img width="120px" src="{{asset('storage/images/categories/'.$child->link_image)}}" alt="">
+                                                                </td>
                                                             @endif
                                                         @else
-                                                            <td class="iv" >{{$product->IV}}</td>
-                                                        @endif
-                                                    @endif
-                                                    @if($child->link_image)
-                                                        @if($loop->first)
-                                                            <td class="image-product" rowspan="{{count($child->products)}}">
-                                                            <img width="120px" src="{{asset('storage/images/categories/'.$child->link_image)}}" alt="">
+
+                                                            <td class="image-product">
+                                                            <img width="120px" src="{{asset('storage/images/products/'.$product->link_image)}}" alt="">
                                                             </td>
                                                         @endif
-                                                    @else
-                                                        <td class="image-product">
-                                                        <img width="120px" src="{{asset('storage/images/products/'.$product->link_image)}}" alt="">
-                                                        </td>
-                                                    @endif
-                                                </tr>
+                                                    </tr>
+                                                @endif
                                             @endforeach
                                         @endforeach
                                     @endforeach
@@ -191,4 +201,19 @@ $('.printMe').click(function(){
 });
 </script>
 
+<script>
+    $(document).ready(function() {
+        // Sélectionnez l'élément avec la classe "iv" (ou ajustez le sélecteur selon vos besoins)
+        $(".iv").each(function() {
+            // Récupérez le texte de l'élément
+            var texte = $(this).text();
+
+            // Remplacez les virgules par des virgules suivies de <br>
+            texte = texte.replace(/,/g, ',<br>');
+
+            // Réinsérez le texte modifié dans l'élément
+            $(this).html(texte);
+        });
+    });
+</script>
 @endpush
