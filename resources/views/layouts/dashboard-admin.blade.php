@@ -289,5 +289,6 @@
 
     @stack('delete-category-script')
     @stack('listing-scripts')
+    @stack('listing-generate-scripts')
 </body>
 </html>

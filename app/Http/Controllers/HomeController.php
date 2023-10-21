@@ -42,8 +42,8 @@ class HomeController extends Controller
     {
         $categories = Category::whereIn('id',$request->categories)
                                 ->orderBy('flag', 'asc')
-                                ->with(['childrenCategories' => function ($query) {
-                                    $query->orderBy('flag', 'asc');
+                                ->with(['childrenCategories' => function ($query) use ($request) {
+                                    $query->whereIn('id', $request->childrencategories)->orderBy('flag', 'asc');
                                 }])
                                 ->get();
 

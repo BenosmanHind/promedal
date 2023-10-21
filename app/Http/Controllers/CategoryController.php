@@ -29,6 +29,8 @@ class CategoryController extends Controller
                 $category->link_image = $storageName;
              }
             $category->save();
+
+           
         }
         else{
             $children_category = new Childrencategory();
